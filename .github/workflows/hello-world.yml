@@ -1,0 +1,20 @@
+# Name of workflow
+name: hello-world
+
+# Event trigger - in this case triggering on push of commit
+on: push
+
+# One or more jobs composed of a sequence of interconnected executable steps
+jobs:
+  # Name of job
+  hello-world-job:
+    # GitHub hosted runner - requires public repo
+    runs-on: ubuntu-latest
+    # Each step either runs a script or runs an action (reusable extension - see GitHub marketplace)
+    steps:
+      # Name and description
+      - name: check out repository code
+        # This is an action (using v4 here - always specify for dependencies)
+        uses: actions/checkout@v4
+      # Run a script from the codebase
+      - run: echo "$(cat hello_world.txt)"
